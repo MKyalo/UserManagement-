@@ -229,28 +229,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- page scripts -->
 <!--Form upload-->
-<script type="text/javascript">
-$(document).ready(function () {
-  bsCustomFileInput.init();
-});
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@yield('scripts')
 
-$(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#users').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-  
-</script>
 
 </body>
 </html>

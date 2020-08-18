@@ -54,8 +54,10 @@
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach ($users as $user)
 				  <tr>
-				  @foreach ($users as $user)
+				 
+          <input type="hidden" class="delUser_id" value="{{$user->id}}">
                     <td>{{$user->id}}</td>
                     <td><img class="table-avatar"
                        src="{{asset('public/storage/avatars/'.$user->avatar)}}" height="40" width="40"
@@ -71,11 +73,35 @@
 										<a class="dropdown-item" href="{{route('users.show',$user->id )}}" class="btn btn primary">View </a>
 										<a class="dropdown-item" href=" {{route('users.edit',$user->id)}}"data-toggle="modal" data-target="#editUser{{$user->id}}" class="btn btn primary">Edit </a>
 										<a class="dropdown-item" href="{{route('users.destroy',$user->id)}}"data-toggle="modal" data-target="#deleteUser{{$user->id}}" class="btn btn primary" >Delete </a>
+                    
+                    
+                    
 									</div>
 						</div><!-- /.btn-group -->
 					</td>
-                  </tr>
-				  @include('users.editUser')			 
+          </tr>
+				  @include('users.editUser')	
+          <!--MODAL TO CONFIRM DELETE-->
+<div class="modal fade" id="deleteUser{{$user->id}}">
+    <div class="modal-dialog">
+      <div class="modal-content bg-normal">
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure you want to delete this User? </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+            <form method="post" action="{{ route('users.destroy',$user->id)}}">
+                @method('DELETE')
+                @csrf
+
+              <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal">NO</button>
+                    <button type="submit" class="btn btn-outline-dark">YES</button>
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+<!-- /. MODAL TO CONFIRM DELETE -->
 				  @endforeach
 
 				</tbody>
@@ -109,5 +135,35 @@
 
  </section>
 
+ @endsection
+ @section('scripts')
+ 
+ <script type="text/javascript">
+$(document).ready(function () {
+  bsCustomFileInput.init();
 
-@endsection
+  
+});
+
+
+$(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#users').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+
+
+</script>
+
+ @endsection

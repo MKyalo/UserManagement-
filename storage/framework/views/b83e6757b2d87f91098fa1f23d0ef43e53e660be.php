@@ -32,7 +32,7 @@
                     <select class="form-control" id="category_id" name="role"  placeholder="">
                     <option value="">Select Role</option> 
                         
-                            <option value="Admin">Admin</option>
+                            <option value="Admin">Admin</option> 
                             <option value="Sales">Sales</option>
                             <option value="User">User</option>
                             
