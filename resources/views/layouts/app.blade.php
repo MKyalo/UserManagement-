@@ -134,47 +134,122 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 $segment=Request::segment(1);
                ?>
        
-           <li class="nav-item">
-            <a href="{{route('dashboard')}}" class="nav-link
-                    @if($segment=='dashboard')
-                      active
-                    @endif
-                    ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item">
+                <a href="{{route('dashboard')}}" class="nav-link
+                        @if($segment=='dashboard')
+                          active
+                        @endif
+                        ">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Dashboard
+                  
+                  </p>
+                </a>
+          </li>
+
+          <li class="nav-item">
+                <a href="{{route('users.index')}}" class="nav-link
+                        @if($segment=='users')
+                          active
+                        @endif
+                        ">
+                  <i class="nav-icon fas fa-users-cog"></i>
+                  <p>
+                    User Management
+                    
+                  </p>
+                </a>
+          </li>
+
+          
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link
+                       @if($segment=='suppliers')
+                          active
+                        @endif
+                        ">
+              <i class="nav-icon fas fa-industry"></i>
               <p>
-                Dashboard
-               
+                Supplier Management
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('suppliers.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Suppliers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('suppliers.create')}}" class="nav-link">
+                  <i class="far fa-plus-square nav-icon"></i>
+                  <p>Add Supplier</p>
+                </a>
+              </li>
+            </ul>
           </li>
-		  <li class="nav-item">
-             <a href="{{route('users.index')}}" class="nav-link
-                    @if($segment=='users')
-                      active
-                    @endif
-                    ">
-              <i class="nav-icon fas fa-users-cog"></i>
+
+          <li class="nav-item">
+                <a href="{{route('categories.index')}}" class="nav-link
+                        @if($segment=='categories')
+                          active
+                        @endif
+                        ">
+                  <i class="nav-icon fas fa-folder"></i>
+                  <p>
+                    Product Categories
+                    
+                  </p>
+                </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link
+                       @if($segment=='products')
+                          active
+                        @endif
+                        ">
+              <i class="nav-icon fas fa-box-open"></i>
               <p>
-                User Management
-                
+                Product Management
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('products.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Products</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('products.create')}}" class="nav-link">
+                  <i class="far fa-plus-square nav-icon"></i>
+                  <p>Add Product</p>
+                </a>
+              </li>
+            </ul>
           </li>
-		    <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link"
-                 onclick="event.preventDefault();
-                 document.getElementById('logout-form').submit();"
-            >
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-            </form>
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
-                Log Out
-                
-              </p>
-            </a>
-          </li>
+
+         <!--Logout-->
+            <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"
+                >
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                </form>
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>
+                    Log Out
+                    
+                  </p>
+                </a>
+            </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

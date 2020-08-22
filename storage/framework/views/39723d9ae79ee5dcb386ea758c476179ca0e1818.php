@@ -20,7 +20,13 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+      <div class="alert alert-danger alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                  This project is still a work in progress. As such some features might not work or might work incorrectly. You can check later for some improvements !!!
+                </div>
        <div class="row">
+       
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">

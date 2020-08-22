@@ -134,47 +134,122 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 $segment=Request::segment(1);
                ?>
        
-           <li class="nav-item">
-            <a href="<?php echo e(route('dashboard')); ?>" class="nav-link
-                    <?php if($segment=='dashboard'): ?>
-                      active
-                    <?php endif; ?>
-                    ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item">
+                <a href="<?php echo e(route('dashboard')); ?>" class="nav-link
+                        <?php if($segment=='dashboard'): ?>
+                          active
+                        <?php endif; ?>
+                        ">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Dashboard
+                  
+                  </p>
+                </a>
+          </li>
+
+          <li class="nav-item">
+                <a href="<?php echo e(route('users.index')); ?>" class="nav-link
+                        <?php if($segment=='users'): ?>
+                          active
+                        <?php endif; ?>
+                        ">
+                  <i class="nav-icon fas fa-users-cog"></i>
+                  <p>
+                    User Management
+                    
+                  </p>
+                </a>
+          </li>
+
+          
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link
+                       <?php if($segment=='suppliers'): ?>
+                          active
+                        <?php endif; ?>
+                        ">
+              <i class="nav-icon fas fa-industry"></i>
               <p>
-                Dashboard
-               
+                Supplier Management
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo e(route('suppliers.index')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Suppliers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo e(route('suppliers.create')); ?>" class="nav-link">
+                  <i class="far fa-plus-square nav-icon"></i>
+                  <p>Add Supplier</p>
+                </a>
+              </li>
+            </ul>
           </li>
-		  <li class="nav-item">
-             <a href="<?php echo e(route('users.index')); ?>" class="nav-link
-                    <?php if($segment=='users'): ?>
-                      active
-                    <?php endif; ?>
-                    ">
-              <i class="nav-icon fas fa-users-cog"></i>
+
+          <li class="nav-item">
+                <a href="<?php echo e(route('categories.index')); ?>" class="nav-link
+                        <?php if($segment=='categories'): ?>
+                          active
+                        <?php endif; ?>
+                        ">
+                  <i class="nav-icon fas fa-folder"></i>
+                  <p>
+                    Product Categories
+                    
+                  </p>
+                </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link
+                       <?php if($segment=='products'): ?>
+                          active
+                        <?php endif; ?>
+                        ">
+              <i class="nav-icon fas fa-box-open"></i>
               <p>
-                User Management
-                
+                Product Management
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo e(route('products.index')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Products</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo e(route('products.create')); ?>" class="nav-link">
+                  <i class="far fa-plus-square nav-icon"></i>
+                  <p>Add Product</p>
+                </a>
+              </li>
+            </ul>
           </li>
-		    <li class="nav-item">
-            <a href="<?php echo e(route('logout')); ?>" class="nav-link"
-                 onclick="event.preventDefault();
-                 document.getElementById('logout-form').submit();"
-            >
-            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                                        <?php echo csrf_field(); ?>
-            </form>
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
-                Log Out
-                
-              </p>
-            </a>
-          </li>
+
+         <!--Logout-->
+            <li class="nav-item">
+                <a href="<?php echo e(route('logout')); ?>" class="nav-link"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"
+                >
+                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                            <?php echo csrf_field(); ?>
+                </form>
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>
+                    Log Out
+                    
+                  </p>
+                </a>
+            </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

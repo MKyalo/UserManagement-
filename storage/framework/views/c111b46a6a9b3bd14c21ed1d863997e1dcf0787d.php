@@ -14,7 +14,7 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Create Account</p>
 
-      <form action="<?php echo e(route('register')); ?>" method="post">
+      <form action="<?php echo e(route('register')); ?>" method="POST">
       <?php echo csrf_field(); ?>
         <div class="input-group mb-3">
           <input type="text" id="first_name" name="first_name" value="<?php echo e(old('first_name')); ?>" class="form-control <?php $__errorArgs = ['first_name'];
