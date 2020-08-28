@@ -65,12 +65,22 @@
                     <td>{{$user->first_name}}</td>
                     <td> {{$user->last_name}}</td>
                     <td>{{$user->phone_number}}</td>
-					<td>{{$user->email}}</td>
-					<td>{{$user->role}}</td>
+					          <td>{{$user->email}}</td>
+					          <td>
+                      @if ($user->role == 'Admin')
+                      <span class=" badge badge-success">Admin</span>
+                      
+                      @elseif ($user->role== 'Sales')
+                      <span class=" badge badge-info">Sales </span>
+                      
+                      @elseif ($user->role== 'User')
+                      <span class=" badge badge-danger"> User</span>
+                      @endif
+                    </td>
 					<td><div class="btn-group">
 								<button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown">Action </button>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="{{route('users.show',$user->id )}}" class="btn btn primary">View </a>
+										<a class="dropdown-item" href="{{route('users.show',$user->id )}}" data-toggle="modal" data-target="#viewUser{{$user->id}}" class="btn btn primary">View </a>
 										<a class="dropdown-item" href=" {{route('users.edit',$user->id)}}"data-toggle="modal" data-target="#editUser{{$user->id}}" class="btn btn primary">Edit </a>
 										<a class="dropdown-item" href="{{route('users.destroy',$user->id)}}"data-toggle="modal" data-target="#deleteUser{{$user->id}}" class="btn btn primary" >Delete </a>
                     
@@ -80,7 +90,8 @@
 						</div><!-- /.btn-group -->
 					</td>
           </tr>
-				  @include('users.editUser')	
+          @include('users.editUser')
+          @include('users.viewUser')	
           <!--MODAL TO CONFIRM DELETE-->
 <div class="modal fade" id="deleteUser{{$user->id}}">
     <div class="modal-dialog">

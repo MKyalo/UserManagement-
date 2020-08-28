@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <p>{{ Auth::user()->first_name }}</p>
+          <p>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</p>
           
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -121,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{asset('public/storage/avatars/'.Auth::user()->avatar)}}" class="img-circle elevation-2" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->first_name }} {{ Auth::user()->first_name }}</a>
+          <a href="#" class="d-block">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
         </div>
       </div>
 

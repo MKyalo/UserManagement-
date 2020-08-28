@@ -29,7 +29,7 @@
 		<div class="col-md-12">
 		    <div class="card card-default">
               <div class="card-header">
-                <h3 class="card-title"><i class="fas fa-folder"></i> All Products</h3>
+                <h3 class="card-title"><a button type="button" href="{{route('products.create')}}" class="btn btn-success float-right" ><i class="far fa-plus-square"></i> Add Product</button></a></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -56,7 +56,15 @@
                     <td>{{$prod->category->category_name}}</td>
                     <td>Ksh. {{$prod->purchase_price}}</td>
                     <td>Ksh. {{$prod->retail_price}}</td>
-                    <td style="color:  #00cc00;"><strong>Ksh {{$prod->profit_margin}}</strong></td>
+                    <td>
+                    
+                        
+                      @if ($prod->purchase_price  < $prod->retail_price)
+                          <span class=" text-success"><i class="fas fa-arrow-up text-sm">Ksh {{$prod->profit_margin}}</i></span>
+                      @elseif ($prod->purchase_price > $prod->retail_price)
+                          <span class="text-danger"><i class="fas fa-arrow-down text-sm"> Ksh {{$prod->profit_margin}}</i></span>
+                      @endif
+                    </td>
                     <td>
                         <div class="btn-group">
 							<button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown">Action </button>

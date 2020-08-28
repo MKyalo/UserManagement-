@@ -59,14 +59,15 @@
                         <div class="btn-group">
 							<button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown">Action </button>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="{{route('categories.show',$cat->id )}}" class="btn btn primary">View </a>
+									<a class="dropdown-item" href="{{route('categories.show',$cat->id )}}"data-toggle="modal" data-target="#categoryInfo{{$cat->id}}" class="btn btn primary">View </a>
 									<a class="dropdown-item" href=" {{route('categories.edit',$cat->id)}}"data-toggle="modal" data-target="#editCategory{{$cat->id}}" class="btn btn primary">Edit </a>
 									<a class="dropdown-item" href="{{route('categories.destroy',$cat->id)}}"data-toggle="modal" data-target="#deleteCategory{{$cat->id}}" class="btn btn primary" >Delete </a>
                                 </div>
 						</div><!-- /.btn-group -->
 					</td>
                   </tr>
-				  @include('categories.editForm')	
+          @include('categories.editForm')	
+          @include('categories.view')
           <!--MODAL TO CONFIRM DELETE-->
 <div class="modal fade" id="deleteCategory{{$cat->id}}">
     <div class="modal-dialog">
@@ -103,7 +104,7 @@
                     </tr>
                   </tfoot>
                 </table>
-			</div> <!--card body-->
+			</div> <!--card body--> 
 			</div><!--card-->
 		</div><!--col-md-6-->
 		<!--END OF USER TABLE-->

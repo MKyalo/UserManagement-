@@ -65,12 +65,22 @@
                     <td><?php echo e($user->first_name); ?></td>
                     <td> <?php echo e($user->last_name); ?></td>
                     <td><?php echo e($user->phone_number); ?></td>
-					<td><?php echo e($user->email); ?></td>
-					<td><?php echo e($user->role); ?></td>
+					          <td><?php echo e($user->email); ?></td>
+					          <td>
+                      <?php if($user->role == 'Admin'): ?>
+                      <span class=" badge badge-success">Admin</span>
+                      
+                      <?php elseif($user->role== 'Sales'): ?>
+                      <span class=" badge badge-info">Sales </span>
+                      
+                      <?php elseif($user->role== 'User'): ?>
+                      <span class=" badge badge-danger"> User</span>
+                      <?php endif; ?>
+                    </td>
 					<td><div class="btn-group">
 								<button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown">Action </button>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="<?php echo e(route('users.show',$user->id )); ?>" class="btn btn primary">View </a>
+										<a class="dropdown-item" href="<?php echo e(route('users.show',$user->id )); ?>" data-toggle="modal" data-target="#viewUser<?php echo e($user->id); ?>" class="btn btn primary">View </a>
 										<a class="dropdown-item" href=" <?php echo e(route('users.edit',$user->id)); ?>"data-toggle="modal" data-target="#editUser<?php echo e($user->id); ?>" class="btn btn primary">Edit </a>
 										<a class="dropdown-item" href="<?php echo e(route('users.destroy',$user->id)); ?>"data-toggle="modal" data-target="#deleteUser<?php echo e($user->id); ?>" class="btn btn primary" >Delete </a>
                     
@@ -80,7 +90,8 @@
 						</div><!-- /.btn-group -->
 					</td>
           </tr>
-				  <?php echo $__env->make('users.editUser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>	
+          <?php echo $__env->make('users.editUser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+          <?php echo $__env->make('users.viewUser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>	
           <!--MODAL TO CONFIRM DELETE-->
 <div class="modal fade" id="deleteUser<?php echo e($user->id); ?>">
     <div class="modal-dialog">

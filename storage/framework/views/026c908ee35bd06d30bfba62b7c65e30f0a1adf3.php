@@ -103,5 +103,7 @@ unset($__errorArgs, $__bag); ?>
     
     <div id="particles"></div>
     
+    
 </body>
-</html><?php /**PATH E:\xampp\htdocs\rbc\resources\views/auth/login.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH E:\xampp\htdocs\rbc\resources\views/auth/login.blade.php ENDPATH**/ ?>
