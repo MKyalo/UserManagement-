@@ -9,8 +9,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>User Management | Starter</title>
+  <title>InventoryManagement</title>
 
+  <link rel="shortcut icon" href="{{asset('public/favicon.ico')}}">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('public/plugins/fontawesome-free/css/all.min.css')}}">
   
@@ -147,8 +148,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
           </li>
-
-          <li class="nav-item">
+        @if(Gate::check('isAdmin') )
+            <li class="nav-item">
                 <a href="{{route('users.index')}}" class="nav-link
                         @if($segment=='users')
                           active
@@ -161,8 +162,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
           </li>
-
-          
+@endif
+ 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link
                        @if($segment=='suppliers')
@@ -182,15 +183,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>All Suppliers</p>
                 </a>
               </li>
+              @if(Gate::check('isAdmin') )
               <li class="nav-item">
                 <a href="{{route('suppliers.create')}}" class="nav-link">
                   <i class="far fa-plus-square nav-icon"></i>
                   <p>Add Supplier</p>
                 </a>
               </li>
+              @endif
             </ul>
           </li>
 
+@can('isAdmin')
           <li class="nav-item">
                 <a href="{{route('categories.index')}}" class="nav-link
                         @if($segment=='categories')
@@ -204,7 +208,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
           </li>
-
+@endcan
+@can('isAdmin')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link
                        @if($segment=='products')
@@ -232,7 +237,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-
+@endcan
          <!--Logout-->
             <li class="nav-item">
                 <a href="{{ route('logout') }}" class="nav-link"

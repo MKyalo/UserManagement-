@@ -21,6 +21,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
+        
+        $this->authorize('isAdmin');
         $suppliers=Supplier::all();
 		return view('suppliers.index',compact ('suppliers'));
     }
@@ -32,6 +34,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
+          $this->authorize('isAdmin');
         return view('suppliers.addSupplier');
     }
 

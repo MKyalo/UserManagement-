@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -33,9 +34,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{$countProducts}}</h3>
 
-                <p>New Orders</p>
+                <p>Products</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -63,7 +64,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{$countUsers}}</h3>
 
                 <p>User Registrations</p>
               </div>
@@ -78,7 +79,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+              <h3></h3>
 
                 <p>Unique Visitors</p>
               </div>
@@ -93,6 +94,5 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+
 @endsection

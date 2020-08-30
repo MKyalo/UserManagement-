@@ -6,6 +6,7 @@ use App\Product;
 use App\Category;
 use App\Supplier;
 use Illuminate\Http\Request;
+use Gate;
 
 class ProductController extends Controller
 {
@@ -28,6 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $this->authorize('isAdmin');
         $categories=Category::all();
         $suppliers=Supplier::all();
         return view('products.addProduct',compact('categories','suppliers'));
@@ -41,6 +43,7 @@ class ProductController extends Controller
      */
     public function store(Request $request,Product $product)
     {
+        $this->authorize('isAdmin');
         if($request->product_image->getClientOriginalName()){
             $ext=$request->product_image->getClientOriginalExtension();
             $file=rand(1,9999).'.'.$ext;
@@ -88,7 +91,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-       $arr['product']=$product;
+       $this->authorize('isAdmin');
+        $arr['product']=$product;
        $categories=Category::all();
         $suppliers=Supplier::all();
         // $product=Product::find($id);
@@ -107,6 +111,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $this->authorize('isAdmin');
         if(isset($request->product_image)&& $request->product_image->getClientOriginalName()){
             $ext=$request->product_image->getClientOriginalExtension();
             $file=rand(1,9999).'.'.$ext;
@@ -144,6 +149,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+       $this->authorize('isAdmin');
         Product::destroy($id);
         return redirect()->back()->withToastSuccess('Product deleted Successfully!');
     }

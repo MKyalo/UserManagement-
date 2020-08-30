@@ -9,8 +9,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>User Management | Starter</title>
+  <title>InventoryManagement</title>
 
+  <link rel="shortcut icon" href="<?php echo e(asset('public/favicon.ico')); ?>">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?php echo e(asset('public/plugins/fontawesome-free/css/all.min.css')); ?>">
   
@@ -147,8 +148,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
           </li>
-
-          <li class="nav-item">
+        <?php if(Gate::check('isAdmin') ): ?>
+            <li class="nav-item">
                 <a href="<?php echo e(route('users.index')); ?>" class="nav-link
                         <?php if($segment=='users'): ?>
                           active
@@ -161,8 +162,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
           </li>
-
-          
+<?php endif; ?>
+ 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link
                        <?php if($segment=='suppliers'): ?>
@@ -182,15 +183,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>All Suppliers</p>
                 </a>
               </li>
+              <?php if(Gate::check('isAdmin') ): ?>
               <li class="nav-item">
                 <a href="<?php echo e(route('suppliers.create')); ?>" class="nav-link">
                   <i class="far fa-plus-square nav-icon"></i>
                   <p>Add Supplier</p>
                 </a>
               </li>
+              <?php endif; ?>
             </ul>
           </li>
 
+<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
           <li class="nav-item">
                 <a href="<?php echo e(route('categories.index')); ?>" class="nav-link
                         <?php if($segment=='categories'): ?>
@@ -204,7 +208,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
           </li>
-
+<?php endif; ?>
+<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link
                        <?php if($segment=='products'): ?>
@@ -232,7 +237,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-
+<?php endif; ?>
          <!--Logout-->
             <li class="nav-item">
                 <a href="<?php echo e(route('logout')); ?>" class="nav-link"
